@@ -86,7 +86,7 @@ class Menu():
         """ Displays the dashboard section of the user interface."""
         self.set_title("Dashboard")
         x = 50
-        self.cur.execute("SELECT COUNT(*) FROM orders WHERE Date(date) = Curdate();")
+        self.cur.execute("SELECT COUNT(*) FROM orders WHERE CAST(date AS DATE)= CAST(GETDATE() AS DATE);")
         sales = self.cur.fetchall()[0]
         self.cur.execute("SELECT COUNT(*) FROM orders;")
         transactions = self.cur.fetchall()[0]
@@ -154,11 +154,11 @@ class Menu():
         self.set_title("Transactions History")
         headings = ("Order Id", "Product Name", "Quantity", "Price", "Date", "Payment Status")
         query = f'''SELECT o.order_id , p.product_name, oi.quantity , oi.price , o.date, o.payment_status
-FROM orders o
-JOIN order_items oi ON o.order_id = oi.order_id
-JOIN products p ON oi.product_id = p.product_id
-WHERE o.customer = '{self.user[0]}';
-'''
+                    FROM orders o
+                    JOIN order_items oi ON o.order_id = oi.order_id
+                    JOIN products p ON oi.product_id = p.product_id
+                    WHERE o.customer = '{self.user[0]}';
+                    '''
         self.make_table(headings,130)
         self.render_table(query=query)
 
