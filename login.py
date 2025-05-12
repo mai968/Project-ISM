@@ -63,17 +63,8 @@ class Login:
         """Authenticate the user by checking the provided username and password with MySQL. """
         uname = self.username.get()
         pwd = self.password.get()
-        # self.cur.execute("INSERT IGNORE INTO users (username, password, account_type) VALUES ('ADMIN', 'ADMIN', 'ADMIN');")
-        self.cur.execute("""
-                            IF NOT EXISTS (SELECT 1 FROM users WHERE username = 'ADMIN')
-                            BEGIN
-                                INSERT INTO users (username, password, account_type)
-                                VALUES ('ADMIN', '1234', 'ADMIN');
-                            END
-                            """)
-
+        self.cur.execute("INSERT IGNORE INTO users (username, password, account_type) VALUES ('ADMIN', 'ADMIN', 'ADMIN');")
         self.cur.execute(f"select * from users where username='{uname}' and password='{pwd}' ")
-
         f = self.cur.fetchall()
         if f:
             print("└─Logged in as {}".format(uname))
