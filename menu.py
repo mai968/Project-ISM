@@ -7,7 +7,7 @@ from PIL import Image
 from utils import error , add_graphs
 
 class Menu():
-    """Represents a menu for the inventory management system."""
+    """Represents a menu for the HR management system."""
 
     def __init__(self, con, user, login_win):
         # Set window theme as dark
@@ -42,17 +42,17 @@ class Menu():
 
         section_functions = {
             "dashboard": self.dashboard,
-            "inventory": self.inventory,
-            "orders": self.orders,
-            "users": self.users,
-            "shop": self.shop,
-            "history": self.history,
+            "employees": self.employees,
+            "attendance": self.attendance,
+            "payroll": self.payroll,
+            # "shop": self.shop,
+            # "history": self.history,
             "logout": self.logout
         }
 
         # Add buttons for different sections in the side panel
         if self.user[2] == 'ADMIN':
-            sections = ["dashboard", "inventory", "orders", "users","logout"]
+            sections = ["dashboard", "employees", "attendance", "payroll", "logout"]
         else:
             sections = ["dashboard", "inventory", "shop", "history","logout"]
 
@@ -85,82 +85,82 @@ class Menu():
     def dashboard(self):
         """ Displays the dashboard section of the user interface."""
         self.set_title("Dashboard")
-        x = 50
-        self.cur.execute("SELECT COUNT(*) FROM orders WHERE CAST(date AS DATE)= CAST(GETDATE() AS DATE);")
-        sales = self.cur.fetchall()[0]
-        self.cur.execute("SELECT COUNT(*) FROM orders;")
-        transactions = self.cur.fetchall()[0]
-        self.cur.execute("SELECT COUNT(*) FROM products;")
-        items = self.cur.fetchall()[0]
+        # x = 50
+        # self.cur.execute("SELECT COUNT(*) FROM orders WHERE CAST(date AS DATE)= CAST(GETDATE() AS DATE);")
+        # sales = self.cur.fetchall()[0]
+        # self.cur.execute("SELECT COUNT(*) FROM orders;")
+        # transactions = self.cur.fetchall()[0]
+        # self.cur.execute("SELECT COUNT(*) FROM products;")
+        # items = self.cur.fetchall()[0]
 
-        header = {"Total Sales Today":sales, "Total Transactions":transactions, "Items in Inventory":items}
-        for title in header:
-            frame = ctk.CTkFrame(master=self.frame, width=300, height=150, corner_radius=15, fg_color="#007fff")
-            frame.place(x=x,y=100)
+        # header = {"Total Sales Today":sales, "Total Transactions":transactions, "Items in Inventory":items}
+        # for title in header:
+        #     frame = ctk.CTkFrame(master=self.frame, width=300, height=150, corner_radius=15, fg_color="#007fff")
+        #     frame.place(x=x,y=100)
 
-            label = ctk.CTkLabel(self.frame, text=header[title], fg_color="#007fff",font=(self.font, 50))
-            label.place(x=x+130,y=130)
+        #     label = ctk.CTkLabel(self.frame, text=header[title], fg_color="#007fff",font=(self.font, 50))
+        #     label.place(x=x+130,y=130)
 
-            text = ctk.CTkLabel(self.frame, text=title, fg_color="#007fff",font=(self.font, 20))
-            text.place(x=x+60,y=220)
+        #     text = ctk.CTkLabel(self.frame, text=title, fg_color="#007fff",font=(self.font, 20))
+        #     text.place(x=x+60,y=220)
 
-            x+=350
-        try:
-            add_graphs(self.cur, self.frame)
-        except:
-            pass
+        #     x+=350
+        # try:
+        #     add_graphs(self.cur, self.frame)
+        # except:
+        #     pass
 
-    def inventory(self):
-        """ Displays the inventory section of the user interface. """
-        self.set_title("Inventory")
+    def employees(self):
+        """ Displays the employees section of the user interface. """
+        self.set_title("Employees")
         if self.user[2] == 'ADMIN':
             add_button = ctk.CTkButton(self.frame, width=50, command=self.add_button, text="Add Item", fg_color="#007fff", font=(self.font , 20))
             add_button.place(x=50,y=50)
-        self.make_table(("Product ID", "Product Name", "Description", "Price", "Quantity"), 130, "products")
+        self.make_table(("Employee ID", "Name", "DateBirth", "Department", "Position", "DateJoined", "Status"), 130, "products")
 
-    def users(self):
-        """ Displays the Users section of the user interface. """
-        self.set_title("Users")
-        self.make_table(("Username", "Password", "Account Type"), 170 ,"users")
-
-
-    def shop(self):
-        """ Displays the shop section of the user interface. """
-        self.set_title("Shop Items")
-        add_button = ctk.CTkButton(self.frame, width=50, command=self.add_item, text="Add Item to cart", fg_color="#007fff", font=(self.font , 25))
-        add_button.place(x=50,y=50)
-
-        remove = ctk.CTkButton(self.frame, width=50, command=self.remove_item, text="Remove Item", fg_color="#fb0000", font=(self.font , 25))
-        remove.place(x=50,y=530)
-
-        label = ctk.CTkLabel(self.frame, text="Total Amount :", font=(self.font, 30))
-        label.place(x=700,y=530)
-
-        button = ctk.CTkButton(master=self.frame, width=390, text="Buy Items", corner_radius=6, command=self.buy)
-        button.place(x=700, y=600)
-        headings = ("Product Id","Product Name", "Description", "Price", "Quantity", "Total Amount")
-        self.make_table(headings, 130,height=400)
+    def attendance(self):
+        """ Displays the attendance section of the user interface. """
+        self.set_title("attendance")
+        self.make_table(("Employee ID", "Date", "Check in", "Check out", "Working hours", "Status"), 170 ,"users")
 
 
-    def orders(self):
-        """ Displays all the Orders placed in the system."""
-        self.set_title("Orders")
-        headings = ("Order Id", "Customer", "Date", "Total Items", "Total Amount", "Payment Status")
-        self.make_table(headings, 130, "orders")
+    # def shop(self):
+    #     """ Displays the shop section of the user interface. """
+    #     self.set_title("Shop Items")
+    #     add_button = ctk.CTkButton(self.frame, width=50, command=self.add_item, text="Add Item to cart", fg_color="#007fff", font=(self.font , 25))
+    #     add_button.place(x=50,y=50)
+
+    #     remove = ctk.CTkButton(self.frame, width=50, command=self.remove_item, text="Remove Item", fg_color="#fb0000", font=(self.font , 25))
+    #     remove.place(x=50,y=530)
+
+    #     label = ctk.CTkLabel(self.frame, text="Total Amount :", font=(self.font, 30))
+    #     label.place(x=700,y=530)
+
+    #     button = ctk.CTkButton(master=self.frame, width=390, text="Buy Items", corner_radius=6, command=self.buy)
+    #     button.place(x=700, y=600)
+    #     headings = ("Product Id","Product Name", "Description", "Price", "Quantity", "Total Amount")
+    #     self.make_table(headings, 130,height=400)
 
 
-    def history(self):
-        """ Displays the order history of the user. """
-        self.set_title("Transactions History")
-        headings = ("Order Id", "Product Name", "Quantity", "Price", "Date", "Payment Status")
-        query = f'''SELECT o.order_id , p.product_name, oi.quantity , oi.price , o.date, o.payment_status
-                    FROM orders o
-                    JOIN order_items oi ON o.order_id = oi.order_id
-                    JOIN products p ON oi.product_id = p.product_id
-                    WHERE o.customer = '{self.user[0]}';
-                    '''
-        self.make_table(headings,130)
-        self.render_table(query=query)
+    def payroll(self):
+        """ Displays all the payroll placed in the system."""
+        self.set_title("Payroll")
+        headings = ("Payroll Id", "Employee ID", "Payroll year", "Payroll month", "Base salary", "Bonus", "Deductions", "Net Salary")
+        self.make_table(headings, 130, "playroll")
+
+
+    # def history(self):
+    #     """ Displays the order history of the user. """
+    #     self.set_title("Transactions History")
+    #     headings = ("Order Id", "Product Name", "Quantity", "Price", "Date", "Payment Status")
+    #     query = f'''SELECT o.order_id , p.product_name, oi.quantity , oi.price , o.date, o.payment_status
+    #                 FROM orders o
+    #                 JOIN order_items oi ON o.order_id = oi.order_id
+    #                 JOIN products p ON oi.product_id = p.product_id
+    #                 WHERE o.customer = '{self.user[0]}';
+    #                 '''
+    #     self.make_table(headings,130)
+    #     self.render_table(query=query)
 
 
     def add_item(self):
