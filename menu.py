@@ -179,11 +179,11 @@ class Menu():
             self.product_entries[label_text] = entry
 
         # Nút Add
-        add_btn = ctk.CTkButton(self.frame, text="Add Employee", command=self.add_product, width=300, height=40, font=(self.font, 18))
+        add_btn = ctk.CTkButton(self.frame, text="Add Employee", command=self.add_emp, width=300, height=40, font=(self.font, 18))
         add_btn.pack(pady=10)
 
 
-    def add_product(self):
+    def add_emp(self):
         """Creates a new employee in the system by registering the provided details in the SQL Server."""
 
         e_id = self.product_entries['Employee ID'].get().strip()
@@ -195,21 +195,21 @@ class Menu():
         date_joined = self.product_entries['DateJoined'].get().strip()
         status = self.product_entries['Status'].get().strip()
 
-        try:
+        
             # Kiểm tra ID đã tồn tại chưa
-            self.cur.execute("SELECT * FROM employees WHERE employee_id = ?", (e_id,))
-            existing = self.cur.fetchall()
+        self.cur.execute("SELECT * FROM employees WHERE employee_id = ?", (e_id,))
+        existing = self.cur.fetchall()
 
-            if existing:
-                messagebox.showerror("ERROR", "Employee ID already exists.")
-                return
+        if existing:
+            messagebox.showerror("ERROR", "Employee ID already exists.")
+            return
 
-            if len(position) > 50:
-                messagebox.showerror("ERROR", "Position must be less than 50 characters.")
-                return
+        if len(position) > 50:
+            messagebox.showerror("ERROR", "Position must be less than 50 characters.")
+            return
 
             # Thêm vào cơ sở dữ liệu
-            self.cur.execute(
+        self.cur.execute(
                 """
                 INSERT INTO employees 
                 (employee_id, full_name, gender, date_of_birth, department, position, date_joined, status) 
@@ -217,18 +217,18 @@ class Menu():
                 """,
                 (e_id, name, gender, dob, dept, position, date_joined, status)
             )
-            self.con.commit()
-            messagebox.showinfo("Success", "Employee added successfully!")
+        self.con.commit()
+        messagebox.showinfo("Success", "Employee added successfully!")
 
             # Đóng form
-            self.topwin.destroy()
+        self.topwin.destroy()
 
             # Cập nhật lại bảng hiển thị nếu có
-            self.tree.delete(*self.tree.get_children())
-            self.render_table("employees")
-        except Exception as e:
-            print(f"Error adding employee: {e}")
-            messagebox.showerror("ERROR", "Failed to add employee. Please check your input.")
+        self.tree.delete(*self.tree.get_children())
+        self.render_table("employees")
+
+
+           
 
     def fill_labels(self, choice):
         """ Fills labels with data of a particular item chosen by user"""
