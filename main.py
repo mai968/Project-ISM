@@ -136,6 +136,7 @@ class Main:
             if self.menu.logout:
                 Main()
 
+
 if __name__ == "__main__":
     m = Main()
 

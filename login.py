@@ -63,7 +63,6 @@ class Login:
         """Authenticate the user by checking the provided username and password with MySQL. """
         uname = self.username.get()
         pwd = self.password.get()
-        # self.cur.execute("INSERT IGNORE INTO users (username, password, account_type) VALUES ('ADMIN', 'ADMIN', 'ADMIN');")
         self.cur.execute("""
                             IF NOT EXISTS (SELECT 1 FROM users WHERE username = 'ADMIN')
                             BEGIN
@@ -71,17 +70,24 @@ class Login:
                                 VALUES ('ADMIN', '1234', 'ADMIN');
                             END
                             """)
-
-        self.cur.execute(f"select * from users where username='{uname}' and password='{pwd}' ")
-
+        
+        # First try to login as employee
+        self.cur.execute(f"SELECT * FROM employees WHERE employee_id = '{uname}' AND gender = '{pwd}'")
         f = self.cur.fetchall()
         if f:
-            print("└─Logged in as {}".format(uname))
+            print("└─Logged in as employee", uname)
             self.window.quit()
-            self.user = f[0]
-
+            self.user = (uname, pwd, 'EMPLOYEE')  # Mark as EMPLOYEE
         else:
-            error("Invalid Username or Password")
+            # Try fallback login as ADMIN
+            self.cur.execute(f"SELECT * FROM users WHERE username = '{uname}' AND password = '{pwd}'")
+            f = self.cur.fetchall()
+            if f:
+                print("└─Logged in as admin", uname)
+                self.window.quit()
+                self.user = f[0]
+            else:
+                error("Invalid Username or Password")
 
     def register(self):
         """Create a new user account by registering the provided username and password in MySQL. """
