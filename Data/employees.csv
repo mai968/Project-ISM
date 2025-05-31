@@ -1,0 +1,52 @@
+employee_id,full_name,gender,date_of_birth,department,position,date_joined,status
+E000000,Allison Hill,Male,1973-07-11,Human Resources,Executive,2024-01-21,Active
+E000001,Stephanie Miller,Male,1981-09-03,Operations,Director,2020-07-09,Resigned
+E000002,Jonathan Johnson,Male,1972-07-11,Finance,Intern,2023-08-16,Active
+E000003,Connie Lawrence,Male,1997-07-24,Sales,Manager,2020-05-27,Active
+E000004,Melissa Peterson,Male,1970-10-01,Human Resources,Director,2025-02-27,Active
+E000005,Brandon Davis,Male,1999-02-14,Finance,Executive,2023-05-24,Active
+E000006,Monica Herrera,Female,2004-04-09,Human Resources,Intern,2022-04-07,Active
+E000007,Sandra Montgomery,Female,1999-09-15,Sales,Executive,2023-04-05,Resigned
+E000008,Amber Perez,Female,1976-03-28,IT,Analyst,2020-10-08,Active
+E000009,Brian Ramirez,Male,1990-06-09,Human Resources,Analyst,2022-03-13,Active
+E000010,Daniel Adams,Male,2002-10-11,Sales,Intern,2023-08-12,Active
+E000011,Carolyn Daniel,Male,1971-01-27,IT,Analyst,2022-04-09,Active
+E000012,Margaret Hawkins DDS,Female,1998-12-06,Sales,Intern,2024-04-02,Active
+E000013,Andrew Stewart,Male,1975-05-09,Marketing,Manager,2021-06-05,Active
+E000014,Sherri Edwards,Female,1991-04-01,Operations,Director,2022-05-08,Active
+E000015,Judy Baker,Female,1974-06-27,Finance,Executive,2023-03-07,Active
+E000016,Kevin Hurst,Male,1980-10-01,Sales,Executive,2021-06-20,Active
+E000017,Ms. Ann Williams MD,Female,1990-02-06,Sales,Executive,2024-05-02,Resigned
+E000018,Arthur James,Male,2005-03-19,Marketing,Analyst,2023-01-07,Active
+E000019,Shannon Smith,Female,1993-12-03,Operations,Analyst,2023-10-13,Active
+E000020,Debra Davidson,Male,1968-12-12,IT,Analyst,2022-07-19,Active
+E000021,Troy Liu,Male,1975-03-05,Operations,Analyst,2022-11-16,Active
+E000022,Thomas Harrell,Male,1976-08-11,Finance,Executive,2023-07-27,Active
+E000023,Brittany Farmer,Male,1986-06-28,Human Resources,Intern,2024-04-07,Active
+E000024,April Nguyen,Female,1965-03-04,IT,Director,2025-01-07,Active
+E000025,Sandra Parker,Male,1966-10-01,Operations,Analyst,2024-10-06,Active
+E000026,Angelica Tucker,Male,1967-03-19,Human Resources,Manager,2024-03-05,Active
+E000027,Betty Alvarez,Female,1986-12-01,Marketing,Analyst,2021-09-12,Active
+E000028,Jenny Lewis,Male,1986-06-26,Human Resources,Director,2024-01-09,Active
+E000029,Eric Carney,Female,1991-01-07,Human Resources,Intern,2022-07-25,Active
+E000030,Barbara Walker,Female,1978-03-27,Operations,Intern,2023-04-25,Active
+E000031,Daniel Jones,Male,1990-04-01,IT,Executive,2021-07-08,Active
+E000032,Shannon Jones,Male,1974-02-18,Operations,Director,2023-09-20,Active
+E000033,Carlos Walls,Female,1987-10-15,Operations,Director,2022-09-26,Active
+E000034,Rhonda Lee,Female,1968-05-07,Finance,Intern,2022-07-12,Active
+E000035,John Daniel,Female,1991-12-25,Human Resources,Executive,2025-04-18,Active
+E000036,James Morgan,Female,1999-09-14,Sales,Manager,2021-08-13,Active
+E000037,Jerry Henderson,Male,1975-10-18,Human Resources,Executive,2021-08-15,Active
+E000038,Jessica Callahan,Female,1986-12-09,Finance,Manager,2020-08-16,Active
+E000039,Dr. Tracy House DVM,Female,1971-03-12,Marketing,Director,2022-10-20,Active
+E000040,James Brown,Female,1979-11-30,Finance,Analyst,2025-04-20,Resigned
+E000041,Richard Gibson,Male,1981-09-19,Operations,Manager,2025-02-28,Active
+E000042,Kristi Higgins MD,Female,1976-07-16,Operations,Analyst,2025-03-20,Active
+E000043,Kimberly Adkins,Male,1966-09-20,IT,Intern,2023-04-18,Active
+E000044,Sarah Moore,Male,2003-10-07,Marketing,Manager,2020-10-09,Active
+E000045,Kurt Leonard,Female,1974-01-07,Finance,Executive,2020-12-21,Active
+E000046,Danielle Wheeler,Male,1989-10-08,Operations,Analyst,2022-06-20,Active
+E000047,Kelly Donovan,Male,1972-09-30,Human Resources,Analyst,2023-12-15,Resigned
+E000048,James Powers,Male,1976-09-03,Finance,Director,2021-12-14,Active
+E000049,Angel Ellis,Male,2005-04-23,Finance,Analyst,2025-05-09,Active
+E000050,Daniel Baker,Female,2002-08-21,Sales,Manager,2024-10-11,Active
